@@ -44,16 +44,16 @@ $puestos = $dataPuestos->getAll();
                         <h5 class="card-title"><?= $post->nombre; ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?= $post->descripcion; ?></h6>
                         <hr>
-                        <a href="../../Candidatos/vistas/candidatoIndex.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Ver candidatos</a>
+                        <a href="../Candidatos/candidatoIndex.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Ver candidatos</a>
                         <br>
                         <br>
-                        <a href="../../PuestoElectivo/vistas/modificarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Modificar</a>
+                        <a href="../PuestoElectivo/modificarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Modificar</a>
                         <br>
                         <br>
                         <?php if ($post->estado == 1) : ?>
-                            <a href="../../PuestoElectivo/servicios/desactivarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Desactivar</a>
+                            <a href="../PuestoElectivo/desactivarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Desactivar</a>
                         <?php else : ?>
-                            <a href="../../PuestoElectivo/servicios/activarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-dark">Activar</a>
+                            <a href="../PuestoElectivo/activarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-dark">Activar</a>
                         <?php endif; ?>
                     </div>
                 </div>

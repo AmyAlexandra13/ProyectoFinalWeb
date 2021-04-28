@@ -29,7 +29,7 @@ class Layout {
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\candidatoIndex.php">
+        <a class="nav-link" href="{$this->directory}PagesAdmin\candidatoIndex.php">
         <span data-feather="users"></span> Candidatos
         </a>
         </li>

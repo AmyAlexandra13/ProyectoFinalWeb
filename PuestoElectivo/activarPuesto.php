@@ -1,21 +1,21 @@
 <?php
 
-require_once '../../../layouts/layout.php';
-require_once '../../../helpers/FileHandler/JsonFileHandler.php';
-require_once '../../../databaseHandler/databaseConnection.php';
-require_once '../../../iDataBase/IDatabase.php';
-require_once '../../PuestoElectivo/servicios/PuestosHandler.php';
-require_once '../../../objects/Puestos.php';
+require_once '../Layout/layout.php';
+require_once '../FileHandler/JsonFileHandler.php';
+require_once '../databaseHandler/databaseConnection.php';
+require_once '../iDataBase/IDatabase.php';
+require_once '../PuestoElectivo/PuestosHandler.php';
+require_once '../objects/Puestos.php';
 
 session_start();
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
 } else {
-    header('Location: ../../Login/vista/loginAdministracion.php');
+    header('Location: ../PagesAdmin/logindAdministracion');
 }
 
-$data = new PuestosHandler('../../../databaseHandler');
+$data = new PuestosHandler('../databaseHandler');
 
 if(isset($_GET['id_puesto'])) {
 
@@ -23,7 +23,7 @@ if(isset($_GET['id_puesto'])) {
 
     $data->Habilitar($idPuesto);
 
-    header('Location: ../vistas/PuestoElectivo.php');
+    header('Location: PuestoElectivo.php');
 }
 
 ?>
