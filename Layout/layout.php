@@ -7,41 +7,44 @@ class Layout {
     public $type;
     public $logout;
     public $menu;
+    public $directory2;
+    
 
     function __construct($action, $title, $type) {
         $this->action    = $action;
         $this->directory = ($this->action) ? "../" : "";
         $this->title     = $title;
         $this->type      = $type;
+       
     }
 
     public function header() {
-        $this->logout = ($this->type) ? $this->directory . "VistaElector/logout.php" : $this->directory . "PagesAdmin/logoutAdmin.php";
+        $this->logout = ($this->type) ? $this->directory . "VistaElector/logout.php" : $this->directory . "PagesAdmin/Login/logoutAdmin.php";
         if($this->type == false) {
             $this->menu = <<<EOF
             <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\PuestoElectivo.php">
+        <a class="nav-link" href="{$this->directory}PuestoElectivo\PuestoElectivo.php">
         <span data-feather="file"></span> Puesto Electivo
         </a>
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\candidatoIndex.php">
+        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\candidatoIndex.php">
         <span data-feather="users"></span> Candidatos
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\CiudadanosAdmin.php">
+        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\CiudadanosAdmin.php">
         <span data-feather="users"></span> Ciudadanos
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\EleccionesAdmin.php">
+        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\EleccionesAdmin.php">
         <span data-feather="bar-chart-2"></span> Elecciones
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\PartidoAdministracion.php">
+        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\PartidoAdministracion.php">
         <span data-feather="layers"></span> Partidos
         </a>
         </li>
@@ -66,7 +69,7 @@ class Layout {
 
         <header>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{$this->directory}PagesAdmin/Administracion.php">Administracion</a>
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="{$this->directory}PagesAdmin\loginAdministracion.php">Administracion</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
