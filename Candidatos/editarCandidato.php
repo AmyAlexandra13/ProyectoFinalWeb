@@ -1,21 +1,21 @@
 <?php
 
-    require_once '../../../layouts/layout.php';
-    require_once '../../../helpers/FileHandler/JsonFileHandler.php';
-    require_once '../../../iDataBase/IDatabase.php';
-    require_once '../../Partidos/servicios/PartidosHandler.php';
-    require_once '../../PuestoElectivo/servicios/PuestosHandler.php';
-    require_once '../../../objects/Puestos.php';
-    require_once '../../../objects/Partidos.php';
-    require_once '../../../objects/Candidatos.php';
-    require_once '../servicios/CandidatosHandler.php';
+    require_once '../Layout/layout.php';
+    require_once '../FileHandler/JsonFileHandler.php';
+    require_once '../iDataBase/IDatabase.php';
+    require_once '../Partidos/PartidosHandler.php';
+    require_once '../PuestoElectivo/PuestosHandler.php';
+    require_once '../objects/Puestos.php';
+    require_once '../objects/Partidos.php';
+    require_once '../objects/Candidatos.php';
+    require_once 'CandidatosHandler.php';
 
     session_start();
     //Aca pueden el editar
     $layout       = new Layout(true, 'Edición del Candidato', false);
-    $dataPartidos = new PartidosHandler('../../../databaseHandler');
-    $dataPuestos  = new PuestosHandler('../../../databaseHandler');
-    $service      = new CandidatosHandler('../../../databaseHandler');
+    $dataPartidos = new PartidosHandler('../databaseHandler');
+    $dataPuestos  = new PuestosHandler('../databaseHandler');
+    $service      = new CandidatosHandler('../databaseHandler');
 
     $partidos = $dataPartidos->getActive();
     $puestos  = $dataPuestos->getActive();
@@ -23,7 +23,7 @@
     if (isset($_SESSION['administracion'])) {
         $administrador = json_decode($_SESSION['administracion']);
     } else {
-        header('Location: ../../Login/vista/loginAdministracion.php');
+        header('Location: ../PagesAdmin/loginAdministracion.php');
     }
 
     if (isset($_GET['id'])) {
@@ -82,7 +82,7 @@
             </div>
             <div class="form-group">
                 <label for="name">Partido</label>
-                <select class="form-control" name="id_partido" id="_partido">
+                <select class="form-control " name="id_partido" id="_partido">
 
                     <?php foreach ($partidos as $parts): ?>
 
@@ -103,7 +103,7 @@
             </div>
             <div class="form-group">
                 <label for="logo">Foto de perfil: </label>
-                <img src="<?php echo "../../../assets/images/candidatos/" . $candidatoCharge->foto_perfil ?>"
+                <img src="<?php echo "../assets/img/candidatos/" . $candidatoCharge->foto_perfil ?>"
                     class="card-img-top" alt="." style="margin:1% 0; width:30rem; display:block">
                 <input type="file" class="form-control" id="fotoperfil" name="fotoperfil">
 
@@ -111,7 +111,7 @@
             <input type="hidden" name='estado' value="<?=$estado;?>">
             <!-- Este input es simplemen para enviar por POST lo q explicaba mas arriba -->
             <div class="form-group">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Editar</button>
+                <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Editar</button>
             </div>
         </form>
     </div>

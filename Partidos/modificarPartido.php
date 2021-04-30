@@ -15,7 +15,7 @@ $data = new PartidosHandler('../databaseHandler');
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
 } else {
-    header('Location: ../../Login/vista/loginAdministracion.php');
+    header('Location: ../PagesAdmin/loginAdministracion.php');
 }
 
 if (isset($_GET['id_partido'])) {
@@ -61,7 +61,7 @@ if (isset($_GET['id_partido'])) {
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <img class="mb-4" src="../../../assets/images/web/puesto.jfif" alt="" width="350" height="120">
+        <img class="mb-4" src="../assets/img/partidos2.jpg" alt="" width="350" height="120">
         <br>
         <form enctype="multipart/form-data" action='modificarPartido.php?id_partido=<?= $idPartido; ?>' method="POST">
             <div class="form-group">
@@ -77,7 +77,7 @@ if (isset($_GET['id_partido'])) {
                 <input type="file" class="form-control" id="logo" name="logo">
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Modificar</button>
+                <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Modificar</button>
             </div>
         </form>
     </div>

@@ -29,22 +29,22 @@ class Layout {
         </li>
 
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\candidatoIndex.php">
+        <a class="nav-link" href="{$this->directory}Candidatos\candidatoIndex.php">
         <span data-feather="users"></span> Candidatos
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\CiudadanosAdmin.php">
+        <a class="nav-link" href="{$this->directory}Ciudadanos\CiudadanosAdmin.php">
         <span data-feather="users"></span> Ciudadanos
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\EleccionesAdmin.php">
+        <a class="nav-link" href="{$this->directory}Elecciones\EleccionesAdmin.php">
         <span data-feather="bar-chart-2"></span> Elecciones
         </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link" href="{$this->directory}PagesAdmin\Prueba\PartidoAdministracion.php">
+        <a class="nav-link" href="{$this->directory}Partidos\PartidoAdministracion.php">
         <span data-feather="layers"></span> Partidos
         </a>
         </li>
@@ -133,5 +133,9 @@ class Layout {
         echo $footer;
 
     }
+
+    
 }
-?>
+//se termina la clase
+//class layout
+///Header admin

@@ -5,12 +5,13 @@ require_once '../FileHandler/JsonFileHandler.php';
 require_once '../iDataBase/IDatabase.php';
 require_once 'AdministrationHandler.php';
 require_once '../objects/Administrador.php';
+require_once '../template/template.php';
 
 session_start();
 
 $getUser = new AdministrationHandler('../databaseHandler');
 
-if(isset($_SESSION['ciudadano'])) {
+if(isset($_SESSION['ciudadano'])) { 
     header('Location: ../index.php');
 }
 
@@ -38,32 +39,33 @@ if (isset($_POST['usuario']) && isset($_POST['clave'])) {
 }
 
 $layout = new Layout(true, 'Log in Administración', true);
+$template = new template(true);
 
 ?>
 
-<?php $layout->Header(); ?>
+<link href="../assets/css/loginAdmin.css" rel="stylesheet">
+<?php $template->printHeader(); ?>
 
-<br>
-<br>
-<br>
 
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <form class="form-signin" action="loginAdministracion.php" method="POST">
-            <h1 class="h3 mb-3 font-weight-normal">Iniciar sesion ADMIN</h1>
-            <label for="usuario" class="sr-only">Usuario</label>
-            <input type="text" id="usuario" class="form-control" placeholder="Usuario" name ='usuario' required>
-            <br>
-            <label for="clave" class="sr-only">Contraseña</label>
-            <input type="password" id="clave" class="form-control" placeholder="Contraseña" name ='clave' required>
-            <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-            <a class="btn btn-lg btn-warning btn-block" href="..\..\..\..\index.php">Volver a inicio</a>
+<main class="text-center mt-4">
+  
+    <form class="form-signin" method="POST" action="loginAdministracion.php">
+        <img class="mb-4" src="../assets/img/images/login.jpg" alt="" width="72" height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Administrator</h1>
+            
+        <label for="usuario" class="sr-only">User</label>
+        <input type="text" id="usuario" class="form-control" placeholder="Administrator Account" name="usuario" required="" autofocus="">
 
-        </form>
-    </div>
-    <div class="col-md-4"></div>
-</div>
+        <label for="clave" class="sr-only">Password</label>
+        <input type="password" id="clave" class="form-control" placeholder="Password" name="clave" required="">
+        <div class="checkbox mb-3">
+            <label>
+            <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    
+</main>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooter() ?>

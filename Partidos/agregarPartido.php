@@ -1,21 +1,21 @@
-<?php
+<?php 
 
-require_once '../../../layouts/layout.php';
-require_once '../../../helpers/FileHandler/JsonFileHandler.php';
-require_once '../../../iDataBase/IDatabase.php';
-require_once '../../Partidos/servicios/PartidosHandler.php';
-require_once '../../../objects/Puestos.php';
-require_once '../../../objects/Partidos.php';
+require_once '../Layout/layout.php';
+require_once '../FileHandler/JsonFileHandler.php';
+require_once '../iDataBase/IDatabase.php';
+require_once '../Partidos/PartidosHandler.php';
+require_once '../objects/Puestos.php';
+require_once '../objects/Partidos.php';
 
 session_start();
 
 $layout = new Layout(true, 'Agregar Partido', false);
-$data = new PartidosHandler('../../../databaseHandler');
+$data = new PartidosHandler('../databaseHandler');
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
 } else {
-    header('Location: ../../Login/vista/loginAdministracion.php');
+    header('Location: ../PagesAdmin/loginAdministracion.php');
 }
 
 if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_FILES['logo'])) {
@@ -45,7 +45,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_FILES['log
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <img class="mb-4" src="../../../assets/images/web/puesto.jfif" alt="" width="350" height="120">
+        <img class="mb-4" src="../assets/img/partidos2.jpg" alt="" width="350" height="120">
         <br>
         <form enctype="multipart/form-data" action='agregarPartido.php' method="POST">
             <div class="form-group">
@@ -61,7 +61,7 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_FILES['log
                 <input type="file" class="form-control" id="logo" name="logo">
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Agregar</button>
+                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Agregar</button>
             </div>
         </form>
     </div>

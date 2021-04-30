@@ -161,7 +161,7 @@ class CandidatosHandler implements IDataBaseHandler
                 $name        = $entity->nombre . $entity->apellido . '.' . $typeReplace;
                 $timeFile    = $foto['tmp_name'];
 
-                $sucess = $this->uploadImage('../../../assets/images/candidatos/', $name, $timeFile, $type, $size);
+                $sucess = $this->uploadImage('../assets/img/candidatos/', $name, $timeFile, $type, $size);
 
                 if ($sucess) {
 
@@ -208,7 +208,7 @@ class CandidatosHandler implements IDataBaseHandler
                 $name        = $entity->nombre . $entity->apellido . '.' . $typeReplace;
                 $timeFile    = $foto['tmp_name'];
 
-                $sucess = $this->uploadImage('../../../assets/images/candidatos/', $name, $timeFile, $type, $size);
+                $sucess = $this->uploadImage('../assets/img/candidatos/', $name, $timeFile, $type, $size);
 
                 if ($sucess) {
 
@@ -271,3 +271,4 @@ class CandidatosHandler implements IDataBaseHandler
         return $isSucess;
     }
 }
+?>

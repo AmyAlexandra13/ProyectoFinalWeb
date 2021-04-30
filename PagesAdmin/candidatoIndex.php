@@ -49,7 +49,7 @@ if (isset($_GET['id_puesto'])) {
         <?php if (empty($candidatos)) : ?>
             <div class="">
                 <h2>No hay candidatos</h2>
-                <a href="../Candidatos/agregarCandidato.php" type="submit" class="btn btn-primary btn-lg btn-block">Agregar candidato</a>
+                <a href="../Candidatos/agregarCandidato.php" type="submit" class="btn btn-outline-primary btn-lg btn-block">Agregar candidato</a>
             </div>
         <?php else : ?>
             <?php foreach ($candidatos as $candidato) : ?>
@@ -66,10 +66,10 @@ if (isset($_GET['id_puesto'])) {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $candidato->apellido; ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $candidato->nombre; ?></h6>
-                            <p class="card-text">Postula como <?= $dataPuesto->getById($candidato->id_puesto)->nombre; ?> para el
+                            <p class="card-text text-info">Postula como <?= $dataPuesto->getById($candidato->id_puesto)->nombre; ?> para el
                                 partido <?= $dataPartido->getById($candidato->id_partido)->nombre; ?> y se
                                 encuentra<?php echo $message; ?></p>
-                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn text-primary">Editar</a>
+                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn text-outline-dark">Editar</a>
 
                             <a href="../servicios/<?php echo $directorio . $candidato->id_candidato; ?>" class="btn btn-primary"><?php echo $btnActivar ?></a>
                         </div>
@@ -77,7 +77,7 @@ if (isset($_GET['id_puesto'])) {
                 </div>
 
             <?php endforeach; ?>
-            <a href="agregarCandidato.php" type="submit" class="btn btn-primary btn-lg btn-block my-5">Agregar candidato</a>
+            <a href="agregarCandidato.php" type="submit" class="btn btn-outline-dark btn-lg btn-block my-5">Agregar candidato</a>
 
         <?php endif; ?>
         <?php ?>

@@ -1,29 +1,34 @@
 <?php
 
-require_once '../../../layouts/layout.php';
-require_once '../../../helpers/FileHandler/JsonFileHandler.php';
-require_once '../../../iDataBase/IDatabase.php';
-require_once '../servicios/PartidosHandler.php';
-require_once '../../../objects/Partidos.php';
+require_once '../Layout/layout.php';
+require_once '../FileHandler/JsonFileHandler.php';
+require_once '../iDataBase/IDatabase.php';
+require_once '../Partidos/PartidosHandler.php';
+require_once '../objects/Partidos.php';
+require_once '../template/template.php';
 
 session_start();
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
 } else {
-    header('Location: ../../Login/vista/loginAdministracion.php');
+    header('Location: ../PagesAdmin/loginAdministracion.php');
 }
 
 $layout = new Layout(true, 'Partidos Políticos', false);
-$dataPartidos = new PartidosHandler('../../../databaseHandler');
+$dataPartidos = new PartidosHandler('../databaseHandler');
 $partidosCharge = $dataPartidos->getAll();
+$template = new template(true, 'Partidos Políticos', false);
 
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
+
 <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-2"><a class="btn btn-danger" href="agregarPartido.php">Agregar partido</a></div>
+    <div class="col-md-2"><a class="btn btn-outline-dark" href="agregarPartido.php">Agregar partido</a></div>
     <div class="col-md-8"></div>
 </div>
 <br>
@@ -31,7 +36,7 @@ $partidosCharge = $dataPartidos->getAll();
 <div class="row">
     <div class="col-md-2"></div>
     <?php if ($partidosCharge == "" || $partidosCharge == null) : ?>
-        <div class="col-md-4">
+        <div class="col-md-4 text-info">
             <h2>No hay puestos agregados.</h1>
         </div>
 
@@ -40,17 +45,17 @@ $partidosCharge = $dataPartidos->getAll();
             <div class="col-md-3">
 
                 <div class="card" style="width: 18rem;">
-                    <img src="../../../assets/images/partidos/<?= $post->logo; ?>" class="card-img-top" alt="...">
+                    <img src="../assets/img/partidos/<?= $post->logo; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><?= $post->nombre; ?></h5>
                         <p class="card-text"><?= $post->descripcion; ?></p>
                         <hr>
-                        <a href="modificarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-secondary">Modificar</a>
+                        <a href="modificarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-secondary">Modificar</a>
                         <hr>
                         <?php if ($post->estado == 1) : ?>
-                            <a href="../servicios/desactivarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-danger">Desactivar</a>
+                            <a href="desactivarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-dark">Desactivar</a>
                         <?php else : ?>
-                            <a href="../servicios/activarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-dark">Activar</a>
+                            <a href="activarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-success">Activar</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -59,4 +64,4 @@ $partidosCharge = $dataPartidos->getAll();
     <?php endif; ?>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

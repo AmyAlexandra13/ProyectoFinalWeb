@@ -8,7 +8,8 @@
     require_once '../objects/Puestos.php';
     require_once '../objects/Partidos.php';
     require_once '../objects/Candidatos.php';
-    require_once '../Candidatos/CandidatosHandler.php';
+    require_once 'CandidatosHandler.php';
+    require_once '../template/template.php';
 
     session_start();
 
@@ -16,6 +17,7 @@
     $dataPartidos = new PartidosHandler('../databaseHandler');
     $dataPuestos  = new PuestosHandler('../databaseHandler');
     $service      = new CandidatosHandler('../databaseHandler');
+    $template = new template(true, 'Agregar Candidato', false);
     $partidos     = $dataPartidos->getActive();
     $puestos      = $dataPuestos->getActive();
 
@@ -89,7 +91,7 @@
                 <input type="file" class="form-control" id="fotoperfil" name="fotoperfil">
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Agregar</button>
+                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Agregar</button>
             </div>
         </form>
     </div>

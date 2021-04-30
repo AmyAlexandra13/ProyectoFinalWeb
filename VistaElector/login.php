@@ -5,8 +5,9 @@ require_once '../FileHandler/JsonFileHandler.php';
 require_once '../databaseHandler/databaseConnection.php';
 require_once '../iDataBase/IDatabase.php';
 require_once '../objects/Ciudadanos.php';
-require_once '../PagesAdmin/servicios/CiudadanosHandler.php';
-require_once '../PagesAdmin/servicios/PuestosHandler.php';
+require_once '../PagesAdmin/CiudadanosHandler.php';
+require_once '../PagesAdmin/PuestosHandler.php';
+require_once '../template/template.php';
 
 session_start();
 
@@ -22,6 +23,7 @@ if (isset($_SESSION['ciudadano'])) {
 
 $layout = new Layout(true, 'Log in', true);
 $ciudadano = new CiudadanosHandler('../databaseHandler');
+$template = new template(true);
 
 if(isset($_POST['cedula'])) {
 
@@ -39,33 +41,26 @@ if(isset($_POST['cedula'])) {
     }
 
 } 
-
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeader(); ?>
 
 
-<div class="pricing-header pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-5">Introducir su documento de indetidad.</h1>
+<main role="main" class="container">
+  <div class="jumbotron pb-2">
+    <h1 class="display-4">Bienvenido a SADVO</h1>
+    <p class="lead">A continuación ingrese su documento de identidad para iniciar el proceso de votación.</p>
+  </div>
+</main>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <form action="login.php" method="POST">
+      <form class="pt-4">
+        <input type="text" class="fadeIn second" id="documento" name="cedula" required placeholder="Documento de Identidad (Cédula)">
+        <input type="submit" class="fadeIn fourth" name="boton" value="Entrar">
+      </form>
+    </form>
+  </div>
+  <?php $template->printFooter() ?>
 </div>
-
-<div class="row">
-    <div class="col-md"></div>
-    <div class="col-md-3">
-
-
-        <form action="login.php" method="POST">
-            <div class="form-group">
-                <input type="text" class="form-control" id="documento" name="cedula" required placeholder="Ingrese su cédula">
-                <div class="nav-scroller py-1 ">
-                </div>
-                <button type="submit" class="btn btn-block btn-primary" name="boton">Entrar</button>
-            </div>
-
-        </form>
-
-    </div>
-    <div class="col-md"></div>
-</div>
-
-<?php $layout->Footer(); ?>

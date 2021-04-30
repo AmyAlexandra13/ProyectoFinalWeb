@@ -1,0 +1,7 @@
+{
+    "host": "smtp.gmail.com",
+    "username": "proyectofinalweb5@gmail.com",
+    "password": "Prueba12345678",
+    "port": 587,
+    "from": "Enviar"
+}

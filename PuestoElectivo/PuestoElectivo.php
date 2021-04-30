@@ -6,6 +6,7 @@ require_once '../databaseHandler/databaseConnection.php';
 require_once '../iDataBase/IDatabase.php';
 require_once '../PuestoElectivo/PuestosHandler.php';
 require_once '../objects/Puestos.php';
+require_once '../template/template.php';
 
 session_start();
 
@@ -18,13 +19,17 @@ if (isset($_SESSION['administracion'])) {
 $layout = new Layout(true, 'Puesto Electivo', false);
 $dataPuestos = new PuestosHandler('../databaseHandler');
 $puestos = $dataPuestos->getAll();
+$template = new template(true, 'Puesto Electivo', false);
 
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
+
 <div class="row">
     <div class="col-md-2"></div>
-    <div class="col-md-2"><a class="btn btn-danger" href="agregarPuesto.php">Agregar puesto electivo</a></div>
+    <div class="col-md-2"><a class="btn btn-outline-dark" href="agregarPuesto.php">Agregar puesto electivo</a></div>
     <div class="col-md-8"></div>
 </div>
 <br>
@@ -32,7 +37,7 @@ $puestos = $dataPuestos->getAll();
 <div class="row">
     <div class="col-md-2"></div>
     <?php if ($puestos == "" || $puestos == null) : ?>
-        <div class="col-md-4">
+        <div class="col-md-4 text-info">
             <h2>No hay puestos agregados.</h1>
         </div>
 
@@ -44,22 +49,23 @@ $puestos = $dataPuestos->getAll();
                         <h5 class="card-title"><?= $post->nombre; ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?= $post->descripcion; ?></h6>
                         <hr>
-                        <a href="../Candidatos/candidatoIndex.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Ver candidatos</a>
+                        <a href="../Candidatos/candidatoIndex.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-info">Ver candidatos</a>
                         <br>
                         <br>
-                        <a href="../PuestoElectivo/modificarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Modificar</a>
+                        <a href="../PuestoElectivo/modificarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-secondary">Modificar</a>
                         <br>
                         <br>
                         <?php if ($post->estado == 1) : ?>
-                            <a href="../PuestoElectivo/desactivarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-danger">Desactivar</a>
+                            <a href="../PuestoElectivo/desactivarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-dark">Desactivar</a>
                         <?php else : ?>
-                            <a href="../PuestoElectivo/activarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-dark">Activar</a>
+                            <a href="../PuestoElectivo/activarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-success">Activar</a>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
+            <div class="col-md-2"></div>
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

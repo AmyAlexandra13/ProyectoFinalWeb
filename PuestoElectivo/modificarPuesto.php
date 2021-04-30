@@ -60,16 +60,16 @@ if(isset($_GET['id_puesto'])) {
         <img class="mb-4" src="../assets/img/elecciones.jpg" alt="" width="440" height="120">
         <br>
         <form action='modificarPuesto.php?id_puesto=<?= $idPuesto; ?>' method="POST">
-            <div class="form-group">
+            <div class="form-group text text-dark">
                 <label for="nombrepuesto">Nombre del puesto</label>
                 <input type="text" class="form-control" id="nombrepuesto" placeholder="Ingrese el nuevo nombre del puesto" value="<?= $puestoCharge->nombre; ?>" name='nombre'>
             </div>
-            <div class="form-group">
+            <div class="form-group text-dark">
                 <label for="descripcionpuesto">Descripción</label>
                 <input type="text" class="form-control" id="descripcionpuesto" placeholder="Ingrese una descripción del puesto" value="<?= $puestoCharge->descripcion; ?>" name='descripcion'>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Agregar</button>
+                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Agregar</button>
             </div>
         </form>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../databaseHandler/databaseConnection.php';
 require_once '../iDataBase/IDatabase.php';
 
@@ -123,7 +124,7 @@ class PartidosHandler implements IDataBaseHandler
                 $name = $entity->nombre . '.' . $typeReplace;
                 $timeFile = $logo['tmp_name'];
 
-                $sucess = $this->uploadImage('../../../assets/images/partidos/', $name, $timeFile, $type, $size);
+                $sucess = $this->uploadImage('../assets/img/partidos/', $name, $timeFile, $type, $size);
 
                 if ($sucess) {
 
@@ -175,7 +176,7 @@ class PartidosHandler implements IDataBaseHandler
                 $name = $entity->nombre . '.' . $typeReplace;
                 $timeFile = $logo['tmp_name'];
 
-                $sucess = $this->uploadImage('../../../assets/images/partidos/', $name, $timeFile, $type, $size);
+                $sucess = $this->uploadImage('../assets/img/partidos/', $name, $timeFile, $type, $size);
 
                 if ($sucess) {
 
@@ -236,3 +237,4 @@ class PartidosHandler implements IDataBaseHandler
         return $isSucess;
     }
 }
+?>
