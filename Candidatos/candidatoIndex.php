@@ -26,10 +26,12 @@ $dataPuesto = new PuestosHandler('../databaseHandler');
 $template = new template(true, 'Candidatos', false);
 
 //estas variables es para q cuando este desactivado el candidato, se ponga en modo oscuro. Mas adelante cambian dependiendo la condicion
-$message    = " NO ACTIVO";
-$background = " text-white bg-dark";
+//$message    = " NO ACTIVO";
+//$background = " text-white bg-dark";
 $directorio = "activarCandidato.php?id=";
 $btnActivar = "Activar";
+
+
 
 $candidatos = $data->getActive();
 
@@ -50,7 +52,7 @@ if (isset($_GET['id_puesto'])) {
     <div class="row">
 
 
-        <?php if (empty($candidatos)) : ?>
+        <?php if (empty($candidatos)) : ?> <!--Por si no hay nada en candidatos -->
             <div class="text-info">
                 <h2>No hay candidatos</h2>
                 <a href="agregarCandidato.php" type="submit" class="btn btn-outline-primary btn-lg btn-block">Agregar candidato</a>
@@ -58,26 +60,41 @@ if (isset($_GET['id_puesto'])) {
         <?php else : ?>
             <a href="agregarCandidato.php" type="submit" class="btn btn-outline-primary btn-lg btn-block my-5">Agregar candidato</a>
             <?php foreach ($candidatos as $candidato) : ?>
-                <!-- Aca cambia el modo dependiendo di esta activo o no. En el card pueden ver la diferencia -->
-                <?php if ($candidato->estado == 1) {
-                    $message    = " ACTIVO";
-                    $background = "";
-                    $directorio = "desactivarCandidato.php?id=";
-                    $btnActivar = "Desactivar";
-                }
+              
                 
-                ?><div class="col-md-4">
-                    <div class="card<?php echo $background ?>" style="width: 18rem;">
+                <div class="col-md-4">
+                  <!-- Aca cambia el modo dependiendo di esta activo o no. En el card pueden ver la diferencia -->
+                 <?php if($candidato->estado == 1) : ?>
+                            <?php $background = " text-white bg-white" ?>
+                            <?php else : ?>
+                                <?php $background = "text-white bg-dark" ?>
+                            <?php endif; ?>
+
+                    <div class="card<?php echo $background ?>" >
                         <img src="<?php echo "../assets/img/candidatos/" . $candidato->foto_perfil ?>" class="card-img-top" alt=".">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $candidato->apellido; ?></h5>
+                            <h5 class="card-subtitle mb-2 text-muted"><?php echo $candidato->apellido; ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted"><?php echo $candidato->nombre; ?></h6>
+
+                                <!--Para poner el mensaje de inactivo y activo -->
+                            <?php if($candidato->estado == 1) : ?>
+                            <?php $message = " activo" ?>
+                            <?php else : ?>
+                                <?php $message = " inactivo" ?>
+                            <?php endif; ?>
                             <p class="card-text text-info">Postula como <?= $dataPuesto->getById($candidato->id_puesto)->nombre; ?> para el
                                 partido <?= $dataPartido->getById($candidato->id_partido)->nombre; ?> y se
-                                encuentra<?php echo $message; ?></p>
-                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn btn-outline-dark">Editar</a>
+                                encuentra  <?php echo $message; ?></p>
 
-                            <a href="<?php echo $directorio . $candidato->id_candidato; ?>" class="btn btn-outline-primary"><?php echo $btnActivar ?></a>
+                                <?php if ($candidato->estado == 1) : ?>
+                            <a href="desactivarCandidato.php?id=<?= $candidato->id_candidato; ?>" class="btn btn-outline-dark ">Desactivar</a>
+                        <?php else : ?>
+                            <a href="activarCandidato.php?id=<?= $candidato->id_candidato; ?>" class="btn btn-outline-success">Activar</a>
+                        <?php endif; ?>
+
+                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn btn-outline-dark">Editar</a>
+                            
+                 
                         </div>
                     </div>
                 </div>

@@ -10,12 +10,29 @@ require_once 'objects\Puestos.php';
 require_once 'objects\EleccionesAuditoria.php';
 require_once 'template\template.php';
 
+
+
+
 session_start();
 
 if (!isset($_SESSION['elecciones'])) {
 
     echo '<script>alert("No hay elecciones activas");</script>';
 }
+
+/*/if(isset($_SESSION['ciudadano'])){
+  $currentCiudadano = json_decode($_SESSION['ciudadano']);
+  if($currentCiudadano->estado ==1)
+{
+  echo '<script>alert("activo");</script>';
+}
+else {
+  echo '<script>alert("inactivo");</script>';
+  
+  
+}
+
+}*/
 
 if (isset($_SESSION['administracion'])) {
 
@@ -26,6 +43,9 @@ if (isset($_SESSION['elecciones']) && isset($_SESSION['ciudadano'])) {
 
     $currentElecciones = json_decode($_SESSION['elecciones']);
     $currentCiudadano = json_decode($_SESSION['ciudadano']);
+
+   
+
 } else {
 
     header('Location: VistaElector\login.php');
@@ -37,6 +57,8 @@ $filterPuestos = new EleccionesHandler('databaseHandler');
 $puestosParciales = $dataPuestos->getAll();
 $puestos = $filterPuestos->FilterPuesto($currentCiudadano->cedula,$currentElecciones->id_elecciones,$puestosParciales);
 $template = new template(false, 'Puesto Electivo', true);
+
+
 ?>
 
 <html lang="en">

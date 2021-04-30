@@ -28,9 +28,14 @@ $template = new template(true);
 if(isset($_POST['cedula'])) {
 
     $currentCiudadano = $ciudadano->getCiudadanoByCedula($_POST['cedula']);
+
+    if($currentCiudadano->estado ==0){
+      echo '<script>alert("No estas activado y no puedes votar")</script>';
+    }
+    else{
     if(isset($_SESSION['elecciones'])) {
 
-        if($currentCiudadano == true) {
+        if($currentCiudadano == true && $currentCiudadano->estado ==1) {
             $_SESSION['ciudadano'] = json_encode($currentCiudadano);
     
             header('Location: ../index.php');
@@ -38,6 +43,8 @@ if(isset($_POST['cedula'])) {
 
     } else {
         echo '<script>alert("No hay elecciones activas.")</script>';
+       
+    }
     }
 
 } 

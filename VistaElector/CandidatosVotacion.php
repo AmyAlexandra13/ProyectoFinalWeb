@@ -174,7 +174,9 @@ if (isset($_GET['id_puesto'])) {
         <?php if (empty($candidatos)) : ?>
             <div class="text-info">
                 <h2>No hay Candidatos</h2>
-                <a href="agregarCandidato.php" type="submit" class="btn btn-outline-primary btn-lg btn-block">Agregar candidato</a>
+                <div>
+                <a href="../index.php" type="submit" class="btn btn-outline-warning btn-lg btn-block">Volver atras</a>  
+            </div>
             </div>
         <?php else : ?>
             <?php foreach ($candidatos as $candidato) : ?>

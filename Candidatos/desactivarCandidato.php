@@ -19,12 +19,11 @@ if (isset($_SESSION['administracion'])) {
 } else {
     header('Location: ../PagesAdmin/loginAdministracion.php');
 }
-
+$context = new CandidatosHandler('../databaseHandler');
 if(isset($_GET['id'])) {
 
     $ID = $_GET['id'];
-
-    $context = new CandidatosHandler('../databaseHandler');
+  
     //Simplemente se desactiva el candidato con el update
     $context->Deshabilitar($ID);
 

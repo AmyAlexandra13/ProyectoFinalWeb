@@ -86,11 +86,15 @@
             </div>
             <div class="form-group">
                 <label for="name">Partido</label>
-                <select class="form-control " name="id_partido" id="_partido">
+                <select class="form-control " name="id_partido" id="id_partido">
 
-                    <?php foreach ($partidos as $parts): ?>
+                      <?php foreach ($partidos as $parts): ?>
 
-                    <option value='<?=$candidatoCharge->id_partido;?>'><?=$parts->nombre;?></option>
+                        <?php if($parts->id_partido == $candidatoCharge->id_partido):?>
+                            <option selected value="<?php echo $parts->id_partido;?>"><?=$parts->nombre;?></option>
+                        <?php else : ?>
+                            <option value="<?php echo $parts->id_partido; ?>"> <?= $parts->nombre ?> </option>
+                        <?php endif; ?>
 
                     <?php endforeach;?>
                 </select>
@@ -100,7 +104,11 @@
                 <select class="form-control" name="id_puesto" id="id_puesto">
                     <?php foreach ($puestos as $post): ?>
 
-                    <option value='<?=$candidatoCharge->id_puesto;?>'><?=$post->nombre;?></option>
+                        <?php if($post->id_puesto == $candidatoCharge->id_puesto):?>
+                            <option selected value="<?php echo $post->id_puesto;?>"><?=$post->nombre;?></option>
+                        <?php else :?>
+                            <option value="<?php echo $post->id_puesto; ?>"> <?= $post->nombre ?> </option>
+                        <?php endif; ?>
 
                     <?php endforeach;?>
                 </select>

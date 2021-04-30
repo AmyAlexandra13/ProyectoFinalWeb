@@ -37,6 +37,7 @@
             $CA->InizializeData(0, $_POST['nombre'], $_POST['apellido'], $_POST['id_partido'], $_POST['id_puesto'], $_FILES['fotoperfil'], 1);
             // var_dump($CA);
             $service->Add($CA);
+            echo '<script>alert("Candidato agregado");</script>';
 
             header("Location: candidatoIndex.php");
             exit();

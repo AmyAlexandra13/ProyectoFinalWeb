@@ -19,12 +19,10 @@ if (isset($_SESSION['administracion'])) {
     header('Location: ../PagesAdmin/loginAdministracion.php');
 }
 
-
+$context = new CandidatosHandler('../databaseHandler');
 if(isset($_GET['id'])) {
 
     $ID = $_GET['id'];
-
-    $context = new CandidatosHandler('../databaseHandler');
 
     //Simplemente se activa el candidato con el update
     $context->Habilitar($ID);

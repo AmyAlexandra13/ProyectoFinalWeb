@@ -178,7 +178,7 @@ class CandidatosHandler implements IDataBaseHandler
 
     function Habilitar($id)
     {
-        $stm = $this->connection->db->prepare("update Candidatos set estado= 1 where id_candidato=?");
+        $stm = $this->connection->db->prepare("update Candidatos set estado= true where id_candidato=?");
         $stm->bind_param("i", $id);
         $stm->execute();
         $stm->close();
@@ -186,7 +186,7 @@ class CandidatosHandler implements IDataBaseHandler
 
     function Deshabilitar($id)
     {
-        $stm = $this->connection->db->prepare("update Candidatos set estado= 0 where id_candidato=?");
+        $stm = $this->connection->db->prepare("update Candidatos set estado= false where id_candidato=?");
         $stm->bind_param("i", $id);
         $stm->execute();
         $stm->close();
