@@ -32,11 +32,7 @@
 
                 $idCiudadano = $_GET['cedula'];
 
-                if( $_POST['nombre'] == "" || $_POST['apellido'] == "" || $_POST['email'] == "") {
-                    echo "<script> alert('Llene los espacios en blanco.'); </script>";
-                }
-                else{
-
+                
                     $Ciudadanos = new Ciudadanos();
                     $Ciudadanos->cedula = $idCiudadano;
                     $Ciudadanos->nombre = $_POST['nombre'];
@@ -52,7 +48,7 @@
             }
 
         }
-    }
+    
 ?>
 
 
