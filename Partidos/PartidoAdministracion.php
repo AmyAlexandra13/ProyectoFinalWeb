@@ -52,10 +52,14 @@ $template = new template(true, 'Partidos Políticos', false);
                         <hr>
                         <a href="modificarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-secondary">Modificar</a>
                         <hr>
+                        <?php if(isset($_SESSION['elecciones']))  :?>
+                       
+                       <?php else :?>
                         <?php if ($post->estado == 1) : ?>
                             <a href="desactivarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-dark">Desactivar</a>
                         <?php else : ?>
                             <a href="activarPartido.php?id_partido=<?= $post->id_partido; ?>" class="btn btn-outline-success">Activar</a>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>

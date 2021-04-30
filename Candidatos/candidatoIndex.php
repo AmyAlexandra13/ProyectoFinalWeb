@@ -86,10 +86,14 @@ if (isset($_GET['id_puesto'])) {
                                 partido <?= $dataPartido->getById($candidato->id_partido)->nombre; ?> y se
                                 encuentra  <?php echo $message; ?></p>
 
+                                <?php if(isset($_SESSION['elecciones']))  :?>
+                       
+                       <?php else :?>
                                 <?php if ($candidato->estado == 1) : ?>
                             <a href="desactivarCandidato.php?id=<?= $candidato->id_candidato; ?>" class="btn btn-outline-dark ">Desactivar</a>
                         <?php else : ?>
                             <a href="activarCandidato.php?id=<?= $candidato->id_candidato; ?>" class="btn btn-outline-success">Activar</a>
+                        <?php endif; ?>
                         <?php endif; ?>
 
                             <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn btn-outline-dark">Editar</a>

@@ -49,10 +49,14 @@ $template = new template(true, 'Ciudadano', false);
                         <h6 class="card-subtitle mb-2 text-muted"><?= $post->cedula; ?><hr><br><?= $post->email; ?></h6>
                         <hr>
                         <br>
+                        <?php if(isset($_SESSION['elecciones']))  :?>
+                       
+                       <?php else :?>
                         <?php if ($post->estado == 1) : ?>
                             <a href="desactivarCiudadano.php?cedula=<?= $post->cedula; ?>" class="btn btn-outline-dark ">Desactivar</a>
                         <?php else : ?>
                             <a href="activarCiudadano.php?cedula=<?= $post->cedula; ?>" class="btn btn-outline-success">Activar</a>
+                        <?php endif; ?>
                         <?php endif; ?>
                         <a href="editarCiudadano.php?cedula=<?= $post->cedula; ?>" class="btn btn-outline-warning">Editar</a>
                     </div>

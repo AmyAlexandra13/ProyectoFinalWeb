@@ -55,11 +55,17 @@ $template = new template(true, 'Puesto Electivo', false);
                         <a href="../PuestoElectivo/modificarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-secondary">Modificar</a>
                         <br>
                         <br>
+                        <?php if(isset($_SESSION['elecciones']))  :?>
+                       
+                    <?php else :?>
                         <?php if ($post->estado == 1) : ?>
                             <a href="../PuestoElectivo/desactivarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-dark">Desactivar</a>
                         <?php else : ?>
                             <a href="../PuestoElectivo/activarPuesto.php?id_puesto=<?= $post->id_puesto; ?>" class="btn btn-outline-success">Activar</a>
                         <?php endif; ?>
+                    <?php endif; ?>
+                    
+                      
                     </div>
                 </div>
             </div>
