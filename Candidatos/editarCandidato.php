@@ -9,6 +9,7 @@
     require_once '../objects/Partidos.php';
     require_once '../objects/Candidatos.php';
     require_once 'CandidatosHandler.php';
+    require_once '../template/template.php';
 
     session_start();
     //Aca pueden el editar
@@ -16,6 +17,7 @@
     $dataPartidos = new PartidosHandler('../databaseHandler');
     $dataPuestos  = new PuestosHandler('../databaseHandler');
     $service      = new CandidatosHandler('../databaseHandler');
+    $template = new template(true, 'Edición del Candidato', false);
 
     $partidos = $dataPartidos->getActive();
     $puestos  = $dataPuestos->getActive();
@@ -59,7 +61,9 @@
 
 ?>
 
-<?php $layout->Header();?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>s
 
 <div class="row" style="margin: auto auto auto 20%; width:auto">
     <div class="col-md"></div>
@@ -118,4 +122,4 @@
     <div class="col-md"></div>
 </div>
 
-<?php $layout->Footer();?>
+<?php $template->printFooterAdmin(); ?>

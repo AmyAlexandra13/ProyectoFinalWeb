@@ -205,15 +205,6 @@ EOF;
             echo $HeaderAdmin;
         }
 
-        public function printBody(){
-            $Body = <<<EOF
-
-            
-
-            EOF;
-            echo $Body;
-        }
-
         public function printFooterAdmin(){
           $FooterAdmin = <<<EOF
           <!-- Begin Page Content -->
@@ -327,7 +318,7 @@ echo  $FooterAdmin;
             <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.min.js"></script>
             <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.min.js.map"></script>
             <script src="{$this->gettingAssetsFolder}assets\js\jquery\jquery-3.5.1.min.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\popper.min.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\jquery\popper.min.js"></script>
             </body>
             </html>
 EOF;
@@ -341,16 +332,16 @@ EOF;
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
             <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.bundle.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.bundle.js.map"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.bundle.min.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.bundle.min.js.map"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.js.map"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.min.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap.min.js.map"></script>
-            <script src="{$this->gettingAssetsFolder}assets\jquery-3.4.1.min.js"></script>
-            <script src="{$this->gettingAssetsFolder}assets\popper.min.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.bundle.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.bundle.js.map"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.bundle.min.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.bundle.min.js.map"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.js.map"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.min.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\bootstrap\bootstrap.min.js.map"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\jquery\jquery-3.5.1.min.js"></script>
+            <script src="{$this->gettingAssetsFolder}assets\js\jquery\popper.min.js"></script>
             </body>
             </html>
 EOF;
@@ -376,7 +367,7 @@ EOF;
                 <link rel="stylesheet" href="{$this->gettingAssetsFolder}assets\css\bootstrap\bootstrap.css.map">
                 <link rel="stylesheet" href="{$this->gettingAssetsFolder}assets\css\bootstrap\bootstrap.min.css">
                 <link rel="stylesheet" href="{$this->gettingAssetsFolder}assets\css\bootstrap\bootstrap.min.css.map">
-                <link rel="stylesheet" href="{$this->gettingAssetsFolder}assets\ourStyle.css">
+                <link rel="stylesheet" href="{$this->gettingAssetsFolder}assets\css\ourStyle.css">
 EOF;
 
             echo $Link;

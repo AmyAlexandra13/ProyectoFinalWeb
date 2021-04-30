@@ -75,7 +75,7 @@ if (isset($_GET['id_puesto'])) {
                             <p class="card-text text-info">Postula como <?= $dataPuesto->getById($candidato->id_puesto)->nombre; ?> para el
                                 partido <?= $dataPartido->getById($candidato->id_partido)->nombre; ?> y se
                                 encuentra<?php echo $message; ?></p>
-                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn text-outline-dark">Editar</a>
+                            <a href="editarCandidato.php?id=<?php echo $candidato->id_candidato; ?>" class="btn btn-outline-dark">Editar</a>
 
                             <a href="<?php echo $directorio . $candidato->id_candidato; ?>" class="btn btn-outline-primary"><?php echo $btnActivar ?></a>
                         </div>

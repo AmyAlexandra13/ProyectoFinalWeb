@@ -6,11 +6,13 @@ require_once '../iDataBase/IDatabase.php';
 require_once '../Partidos/PartidosHandler.php';
 require_once '../objects/Puestos.php';
 require_once '../objects/Partidos.php';
+require_once '../template/template.php';
 
 session_start();
 
 $layout = new Layout(true, 'Agregar Partido', false);
 $data = new PartidosHandler('../databaseHandler');
+$template = new template(true, 'Agregar Partido', false);
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
@@ -37,11 +39,12 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_FILES['log
 
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
 
 <br>
-<br>
-<br>
+
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
@@ -68,4 +71,4 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion']) && isset($_FILES['log
     <div class="col-md-4"></div>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

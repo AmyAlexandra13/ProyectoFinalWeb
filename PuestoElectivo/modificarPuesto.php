@@ -6,11 +6,13 @@ require_once '../iDataBase/IDatabase.php';
 require_once '../databaseHandler/databaseConnection.php';
 require_once '../PuestoElectivo/PuestosHandler.php';
 require_once '../objects/Puestos.php';
+require_once '../template/template.php';
 
 session_start();
 
 $layout = new Layout(true, 'Modificar Puesto', false);
 $data = new PuestosHandler('../databaseHandler');
+$template = new template(true, 'Modificar Puesto', false);
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
@@ -49,7 +51,9 @@ if(isset($_GET['id_puesto'])) {
 
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
 
 <br>
 <br>
@@ -69,11 +73,11 @@ if(isset($_GET['id_puesto'])) {
                 <input type="text" class="form-control" id="descripcionpuesto" placeholder="Ingrese una descripción del puesto" value="<?= $puestoCharge->descripcion; ?>" name='descripcion'>
             </div>
             <div class="form-group">
-                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Agregar</button>
+                <button class="btn btn-lg btn-outline-primary btn-block" type="submit">Editar</button>
             </div>
         </form>
     </div>
     <div class="col-md-4"></div>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

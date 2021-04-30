@@ -4,7 +4,7 @@
     require_once '../FileHandler/JsonFileHandler.php';
     require_once '../iDataBase/IDatabase.php';
     require_once '../databaseHandler/databaseConnection.php';
-    require_once 'CiudadanosHandler.php';
+    require_once '../Ciudadanos/CiudadanosHandler.php';
     require_once '../objects/Ciudadanos.php';
     require_once '../template/template.php';
 
@@ -20,25 +20,25 @@
         header('Location: ../PagesAdmin/loginAdministracion.php');
     }
 
-    if (isset($_GET['id_ciudadano'])){
+    if (isset($_GET['cedula'])){
 
-        $idCiudadano = $_GET['id_ciudadano'];
+        $idCiudadano = $_GET['cedula'];
 
-        $ciudadanoCharge = $data->getById($idCiudadano);
+        $ciudadanoCharge = $data->getCiudadanoByCedula($idCiudadano);
 
-        if(isset($_POST['nombre']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'])){
+        if(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['email'])){
 
-            if(isset($_GET['id_ciudadano'])){
+            if(isset($_GET['cedula'])){
 
-                $idCiudadano = $_GET['id_ciudadano'];
+                $idCiudadano = $_GET['cedula'];
 
-                if($_POST['cedula'] == "" || $_POST['nombre'] == "" || $_POST['apellido'] == "" || $_POST['email'] == "") {
+                if( $_POST['nombre'] == "" || $_POST['apellido'] == "" || $_POST['email'] == "") {
                     echo "<script> alert('Llene los espacios en blanco.'); </script>";
                 }
                 else{
 
                     $Ciudadanos = new Ciudadanos();
-                    $Ciudadanos->cedula = $_POST['cedula'];
+                    $Ciudadanos->cedula =  $idCiudadano;
                     $Ciudadanos->nombre = $_POST['nombre'];
                     $Ciudadanos->apellido = $_POST['apellido'];
                     $Ciudadanos->email = $_POST['email'];
@@ -59,39 +59,6 @@
 <?php $template->printLink()?>
 <?php $template->printScript() ?>
 
-    <!-- <br>
-    <br>
-    <br>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <img class="mb-4" src="../assets/img/ciudadano.png" alt="" width="350" height="120">
-                <br>
-                <form enctype="multipart/form-data" action='editarCiudadano.php?id_ciudadano=<?= $idCiudadano; ?>' method="POST">
-                    <div class="form-group">
-                        <label for="cedulaciudadano">Editar cédula:</label>
-                        <input type="text" class="form-control" id="cedulaciudadano" placeholder="Edite la cédula del ciudadano"  value="<?= $ciudadanoCharge->cedula; ?>" required name='cedula'>
-                    </div>
-                    <div class="form-group">
-                        <label for="nombreciudadano">Editar nombre del Ciudadano</label>
-                        <input type="text" class="form-control" id="nombreciudadano" placeholder="Edite el nombre del ciudadano" value="<?= $ciudadanoCharge->nombre; ?>" required name='nombre'>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellidociudadano">Editar apellido del Candidato</label>
-                        <input type="text" class="form-control" id="apellidociudadano" placeholder="Edite el apellido del ciudadano" value="<?= $ciudadanoCharge->apellido; ?>" required name='apellido'>
-                    </div>
-                    <div class="form-group">
-                        <label for="apellidocandidato">Editar correo electrónico</label>
-                        <input type="email" class="form-control" id="emailciudadano" placeholder="example@correo.com" value="<?= $ciudadanoCharge->email; ?>" required name='email'>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Editrtar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-4"></div>
-        </div>   -->  
-
         <br>
         <br>
         <br>
@@ -100,7 +67,7 @@
             <div class="col-md-4">
                 <img class="mb-4" src="../assets/img/ciudadano.png" alt="" width="440" height="120">
                 <br>
-                <form action='editarCiudadano.php?id_ciudadano=<?= $idCiudadano; ?>' method="POST">
+                <form action='editarCiudadano.php?cedula=<?= $idCiudadano; ?>' method="POST">
                     <div class="form-group text text-dark">
                         <label for="cedulaciudadano">Cedula del ciudadano</label>
                         <input type="text" class="form-control" id="cedulaciudadano" placeholder="Ingrese la cedula del ciudadano" value="<?= $ciudadanoCharge->cedula; ?>" name='cedula'>

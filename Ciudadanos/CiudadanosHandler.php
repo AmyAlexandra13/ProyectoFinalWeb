@@ -108,8 +108,8 @@ class CiudadanosHandler implements IDataBaseHandler
 
     function Edit($entity)
     {
-        $stm = $this->connection->db->prepare('update Ciudadanos set cedula = ?, nombre = ?, apellido = ?, email = ? where id_ciudadano = ?');
-        $tm->bind_param('isssi', $entity->cedula, $entity->nombre, $entity->apellido, $entity->email, $entity->$idCiudadano);
+        $stm = $this->connection->db->prepare('update Ciudadanos set cedula = ?, nombre = ?, apellido = ?, email = ? where cedula = ?');
+        $stm->bind_param('ssss', $entity->cedula, $entity->nombre, $entity->apellido, $entity->email);
         $stm->execute();
     }
 

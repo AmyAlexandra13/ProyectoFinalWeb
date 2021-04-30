@@ -6,11 +6,13 @@ require_once '../iDataBase/IDatabase.php';
 require_once '../Partidos/PartidosHandler.php';
 require_once '../objects/Puestos.php';
 require_once '../objects/Partidos.php';
+require_once '../template/template.php';
 
 session_start();
 
 $layout = new Layout(true, 'Modificar Partido', false);
 $data = new PartidosHandler('../databaseHandler');
+$template = new template(true, 'Modificar Partido', false);
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
@@ -53,7 +55,10 @@ if (isset($_GET['id_partido'])) {
 
 ?>
 
-<?php $layout->Header(); ?>
+
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
 
 <br>
 <br>
@@ -84,4 +89,4 @@ if (isset($_GET['id_partido'])) {
     <div class="col-md-4"></div>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

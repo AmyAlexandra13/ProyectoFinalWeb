@@ -47,7 +47,9 @@
     //name, apellido, id_partido, id_puesto, fotoperfil
 ?>
 
-<?php $layout->Header();?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
 
 <div class="row" style="margin: auto auto auto 20%; width:auto">
     <div class="col-md"></div>
@@ -98,4 +100,5 @@
     <div class="col-md"></div>
 </div>
 
-<?php $layout->Footer();?>
+
+<?php $template->printFooterAdmin(); ?>

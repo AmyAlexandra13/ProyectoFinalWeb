@@ -6,12 +6,14 @@ require_once '../databaseHandler/databaseConnection.php';
 require_once '../iDataBase/IDatabase.php';
 require_once '../PuestoElectivo/PuestosHandler.php';
 require_once '../objects/Puestos.php';
+require_once '../template/template.php';
 
 
 session_start();
 
 $layout = new Layout(true, 'Agregar Puesto', false);
 $data = new PuestosHandler('../databaseHandler');
+$template = new template(true, 'Agregar Puesto', false);
 
 if (isset($_SESSION['administracion'])) {
     $administrador = json_decode($_SESSION['administracion']);
@@ -38,7 +40,9 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion'])) {
 
 ?>
 
-<?php $layout->Header(); ?>
+<?php $template->printHeaderAdmin();?>
+<?php $template->printLink()?>
+<?php $template->printScript() ?>
 
 <br>
 <br>
@@ -65,4 +69,4 @@ if(isset($_POST['nombre']) && isset($_POST['descripcion'])) {
     <div class="col-md-4"></div>
 </div>
 
-<?php $layout->Footer(); ?>
+<?php $template->printFooterAdmin(); ?>

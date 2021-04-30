@@ -10,6 +10,7 @@ require_once '../objects/Candidatos.php';
 
 require_once '../FileHandler/JsonFileHandler.php';
 require_once '../iDataBase/IDatabase.php';
+require_once '../template/template.php';
 
 session_start();
 
